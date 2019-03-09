@@ -22,8 +22,13 @@ var ArticleSchema = new Schema({
         default: false
     },
     comments: {
-        type: Schema.Types.ObjectId,
-        ref: "Comment"
+        type: [{
+            comment: String,
+            date: {
+                type: Date,
+                default: Date.now
+            }
+        }]
     }
 });
 

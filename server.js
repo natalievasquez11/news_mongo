@@ -91,38 +91,35 @@ app.put("/api/unsaved", function(req, res) {
     });
 });
 
-app.get("/articles/:id", function(req, res) {
+//db.articles.update({_id: ObjectId("5c82e826285ecf325d7a390c")}, {$set: {comments: "blah blah blah"}})
+app.put("/comment/:id", function(req, res) {
 
-    db.Article.findOne({
-        _id: req.params.id
-    }).populate("comments")
-    .then(function(dbArticle) {
+    db.Article.update({
+        _id: req.params.id,
+        saved: true
+    }, {
+        $push: { 
+            comments: { comment: req.body.comment}
+        }
+    }).then(function(dbArticle) {
         res.json(dbArticle);
     }).catch(function(err) {
         res.json(err);
     });
 });
 
-app.post("/articles/:id", function(req, res) {
-    
-    db.Comment.create(req.body)
-    .then(function(dbComment) {
-        return db.Article.findOneAndUpdate(
-        { _id: req.params.id },
-        { comments: dbComment },
-        { new: true }
-        )}).then(function(dbArticle) {
-        res.json(dbArticle);
-    }).catch(function(err) {
-        res.json(err);
-    });
-});
+//5c841bd1d16e123ebe55116c
+//5c84215497f53f3f5fb30a2a
+app.put("/uncomment/:id", function(req, res) {
 
-app.put("/api/uncomment/:id", function(req, res) {
-
-    db.Comment.remove({
-        _id: req.params.id
-    }).then(function(dbComment) {
+    db.Article.update({
+        _id: req.params.id,
+        saved: true
+    }, {
+        $pull: {
+            comments: { _id: req.body.id }
+        }
+    }).then(function(dbArticle) {
         res.json(dbComment);
     }).catch(function(err) {
         res.json(err);
