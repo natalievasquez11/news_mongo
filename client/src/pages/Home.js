@@ -11,9 +11,9 @@ class Home extends Component {
     scraped: []
   }
 
-  componentDidMount() {
-    return this.state.scraped;
-  }
+//   componentDidMount() {
+//     return this.state.scraped;
+//   }
 
   handleScrape = event => {
 
@@ -22,7 +22,7 @@ class Home extends Component {
 
       //get articles scraped
       axios.get("/articles").then(response => {
-
+        //setState from empty array to array of articles from api calls
         this.setState({
           scraped: response.data
         });
@@ -34,18 +34,30 @@ class Home extends Component {
     }).catch(function(err) {
       console.log(err);
     });
+  }
 
+  handleClear = event => {
 
+    //call api to clear articles from website
+    axios.put("/clearArticles").then(response => {
+        
+        this.setState({
+            scraped: []
+        });
+    });
   }
 
   render() {
     return (
       <div>
-        < Navbar />
+        < Navbar 
+            handleClear={this.handleClear}
+        />
         < Jumbotron />
         < Main 
-          handleScrape={this.handleScrape} 
-          scrapedArticles={this.state.scraped}/>
+            handleScrape={this.handleScrape} 
+            scrapedArticles={this.state.scraped}
+        />
         {/* < Footer /> */}
       </div>
     );
