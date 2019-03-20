@@ -91,7 +91,6 @@ app.put("/unsaved", function(req, res) {
     });
 });
 
-//db.articles.update({_id: ObjectId("5c82e826285ecf325d7a390c")}, {$set: {comments: "blah blah blah"}})
 app.put("/comment/:id", function(req, res) {
 
     db.Article.update({
@@ -108,8 +107,6 @@ app.put("/comment/:id", function(req, res) {
     });
 });
 
-//5c841bd1d16e123ebe55116c
-//5c84215497f53f3f5fb30a2a
 app.put("/uncomment/:id", function(req, res) {
 
     db.Article.update({

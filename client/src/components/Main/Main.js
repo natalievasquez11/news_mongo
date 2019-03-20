@@ -1,29 +1,22 @@
 import React from "react";
 import "./style.css";
 
-function Main() {
+function Main(props) {
     return(
         <div className="container center-align">
-            <a className="btn-large center-align">Click here to scrape NPR articles</a>
+            <a className="btn-large center-align" onClick={props.handleScrape}>Click here to scrape NPR articles</a>
             <div className="row">
                 <div className="col s12">
-                {/* <div className="card-panel">
-                    <span className="black-text">I am a very simple card. 
-                        I am good at containing small bits of information. I am convenient 
-                        because I require little markup to use effectively. I am similar 
-                        to what is called a panel in other frameworks.
-                    </span>
-                </div>
-                <div className="card-panel">
-                    <span className="black-text">I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-                    </span>
-                </div>
-                <div className="card-panel">
-                    <span className="black-text">I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-                    </span>
-                </div> */}
+                {props.scrapedArticles.map(articleRes => (
+                    <a href={articleRes.link} target="_blank">
+                        <div className="card-panel left-align">
+                            <span className="black-text">
+                                <h6><strong>{articleRes.headline}</strong></h6>
+                                <p>{articleRes.summary}</p>
+                            </span>
+                        </div>
+                    </a>
+                ))}
                 </div>
             </div>
         </div>
