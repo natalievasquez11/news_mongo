@@ -53,6 +53,16 @@ app.get("/articles", function(req, res) {
     });
 }); 
 
+app.put("/clearArticles", function(req, res) {
+
+    db.Article.remove({})
+    .then(function(dbArticle) {
+        res.json(dbArticle);
+    }).catch(function(err) {
+        res.json(err);
+    });
+});
+
 app.get("/saved", function(req, res) {
 
     db.Article.find({ saved: true })

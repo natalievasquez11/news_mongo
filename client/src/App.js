@@ -1,55 +1,20 @@
-import React, { Component } from 'react';
-import Navbar from "./components/Navbar/Navbar";
-import Jumbotron from "./components/Jumbotron/Jumbotron";
-import Footer from "./components/Footer/Footer";
-import Main from "./components/Main/Main";
-import axios from 'axios';
+import React from 'react';
+import {BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Saved from "./pages/Saved";
 
-
-class App extends Component {
-  state = {
-    scraped: []
-  }
-
-  componentDidMount() {
-    return this.state.scraped;
-  }
-
-  handleScrape = event => {
-
-    //scrape the news website
-    axios.get("/scrape").then(response => {
-
-      //get articles scraped
-      axios.get("/articles").then(response => {
-
-        this.setState({
-          scraped: response.data
-        });
-
-      }).catch(function(err) {
-        console.log(err);
-      });
-
-    }).catch(function(err) {
-      console.log(err);
-    });
-
-
-  }
-
-  render() {
-    return (
+function App() {
+  return(
+    <Router>
       <div>
-        < Navbar />
-        < Jumbotron />
-        < Main 
-          handleScrape={this.handleScrape} 
-          scrapedArticles={this.state.scraped}/>
-        {/* < Footer /> */}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/saved" component={Saved} />
       </div>
-    );
-  }
+    </Router>
+  )
 }
 
 export default App;
+
+
+
