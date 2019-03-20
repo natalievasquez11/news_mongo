@@ -63,7 +63,7 @@ app.get("/saved", function(req, res) {
     });
 });
 
-app.put("/api/saved/:id", function(req, res) {
+app.put("/saved/:id", function(req, res) {
 
     db.Article.update(
         { _id: req.params.id},
@@ -76,7 +76,7 @@ app.put("/api/saved/:id", function(req, res) {
     });
 });
 
-app.put("/api/unsaved", function(req, res) {
+app.put("/unsaved", function(req, res) {
 
     db.Article.updateMany(
         {},

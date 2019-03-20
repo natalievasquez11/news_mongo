@@ -1,0 +1,16 @@
+.nav-wrapper {
+    background-color: black;
+    color: white;
+}
+
+.btn {
+    background-color: #0d47a1;
+}
+
+.btn:hover {
+    background-color: #0277bd;
+}
+
+.btn:active {
+    background-color: #81d4fa;
+}

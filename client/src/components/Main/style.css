@@ -1,0 +1,14 @@
+.btn-large {
+    background-color: #0d47a1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-large:hover {
+    background-color: #0277bd;
+}
+
+.btn-large:active {
+    background-color: #81d4fa;
+}
+
