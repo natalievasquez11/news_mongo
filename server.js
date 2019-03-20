@@ -32,6 +32,14 @@ app.get("/scrape", function(req, res) {
             result.summary = $(this).children(".teaser").text();
             result.link = $(this).children(".title").children("a").attr("href");
 
+            //empty collection every time scrape button is click so same articles don't get scraped more than once.
+            db.Article.remove({})
+            .then(function(dbArticle) {
+                res.json(dbArticle);
+            }).catch(function(err) {
+                res.json(err);
+            });
+
             db.Article.create(result)
                 .then(function(dbArticle) {
                     console.log(dbArticle);

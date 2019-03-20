@@ -11,9 +11,9 @@ class Home extends Component {
     scraped: []
   }
 
-//   componentDidMount() {
-//     return this.state.scraped;
-//   }
+  componentDidMount() {
+    return this.state.scraped;
+  }
 
   handleScrape = event => {
 
@@ -40,7 +40,7 @@ class Home extends Component {
 
     //call api to clear articles from website
     axios.put("/clearArticles").then(response => {
-        
+
         this.setState({
             scraped: []
         });

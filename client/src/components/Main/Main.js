@@ -4,7 +4,9 @@ import "./style.css";
 function Main(props) {
     return(
         <div className="container center-align">
-            <a className="btn-large center-align" onClick={props.handleScrape}>Click here to scrape NPR articles</a>
+            <a className={props.scrapedArticles.length === 0 ? "btn-large" : "btn-large disabled"} onClick={props.handleScrape}>
+                Click here to scrape NPR articles
+            </a>
             <div className="row">
                 <div className="col s12">
                 {props.scrapedArticles.map(articleRes => (
