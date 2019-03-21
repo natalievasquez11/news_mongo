@@ -81,7 +81,7 @@ app.get("/saved", function(req, res) {
     });
 });
 
-app.put("/saved/:id", function(req, res) {
+app.put("/saveArticle/:id", function(req, res) {
 
     db.Article.update(
         { _id: req.params.id},

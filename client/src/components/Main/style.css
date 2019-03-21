@@ -12,3 +12,24 @@
     background-color: #81d4fa;
 }
 
+.btn {
+    margin-top: 60px;
+}
+
+.swal-button {
+    background-color: #0d47a1 !important;
+    border-radius: 3px !important;
+}
+
+.swal-button:hover {
+    background-color: #0277bd !important;
+    border-radius: 3px !important;
+}
+
+.swal-button:active {
+    background-color: #81d4fa !important;
+    border-radius: 3px !important;
+}
+
+
+

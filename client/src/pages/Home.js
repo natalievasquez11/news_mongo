@@ -4,6 +4,7 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 import Footer from "../components/Footer/Footer";
 import Main from "../components/Main/Main";
 import axios from 'axios';
+import swal from 'sweetalert';
 
 
 class Home extends Component {
@@ -56,6 +57,14 @@ class Home extends Component {
     });
   }
 
+  handleSave = event => {
+    const id = event.target.id;
+
+    axios.put("/saveArticle/" + id).then(response => {
+        swal("Nice!", "Article saved", "success");
+    });
+  }
+
   render() {
     return (
       <div>
@@ -66,6 +75,7 @@ class Home extends Component {
         < Main 
             handleScrape={this.handleScrape} 
             scrapedArticles={this.state.scraped}
+            handleSave={this.handleSave}
         />
         {/* < Footer /> */}
       </div>
