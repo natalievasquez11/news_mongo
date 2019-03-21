@@ -12,7 +12,16 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    return this.state.scraped;
+
+    axios.get("/articles").then(response => {
+
+        this.setState({
+          scraped: response.data
+        });
+
+      }).catch(function(err) {
+        console.log(err);
+      });
   }
 
   handleScrape = event => {
