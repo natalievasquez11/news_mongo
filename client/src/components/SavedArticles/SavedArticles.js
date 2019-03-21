@@ -25,12 +25,12 @@ function SavedArticles(props) {
                             </a>
                         </div>
                         <div className="col s1 valign-wrapper">
-                            <a id={articleRes._id}className="btn">DELETE</a>
+                            <a id={articleRes._id} className="btn" onClick={props.handleDeleteArticle}>DELETE</a>
                             <br />
                         </div>
                         <div className="col s1 valign-wrapper">
                             <br />
-                            <a id={articleRes._id}className="btn">COMMENTS</a>
+                            <a id={articleRes._id} className="btn">COMMENTS</a>
                         </div>
                     </div>
                 ))}

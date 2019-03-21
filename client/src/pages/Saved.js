@@ -36,6 +36,21 @@ class Saved extends Component {
         });
     }
 
+    handleDeleteArticle = event => {
+        const id = event.target.id;
+
+        axios.put("/unsaveArticle/" + id).then(response => {
+
+            axios.get("/saved").then(response => {
+                swal("OK!", "Article removed.", "success");
+                this.setState({
+                    saved: response.data
+                });
+                  
+            });
+        });
+    }
+
     render() {
         return (
           <div>
@@ -45,7 +60,8 @@ class Saved extends Component {
             < SavedJumbotron />
             < SavedArticles 
                 savedArticlesState={this.state.saved}
-/>
+                handleDeleteArticle={this.handleDeleteArticle}
+            />
             {/* < Footer /> */}
           </div>
         );
