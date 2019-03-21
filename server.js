@@ -94,6 +94,19 @@ app.put("/saveArticle/:id", function(req, res) {
     });
 });
 
+app.put("/unsaveArticle/:id", function(req, res) {
+    
+    db.Article.update(
+        { _id: req.params.id},
+        { $set:
+            { saved: false }
+    }).then(function(dbArticle) {
+        res.json(dbArticle);
+    }).catch(function(err) {
+        res.json(err);
+    });
+});
+
 app.put("/unsaved", function(req, res) {
 
     db.Article.updateMany(
