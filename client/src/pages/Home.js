@@ -50,10 +50,16 @@ class Home extends Component {
 
     //call api to clear articles from website
     axios.put("/clearArticles").then(response => {
-
-        this.setState({
-            scraped: []
-        });
+        
+        if(this.state.scraped.length === 0) {
+            swal("Oops!", "There are no articles to remove", "error");
+        } else {
+            this.setState({
+                scraped: []
+            });
+            swal("OK!", "All articles have been removed.", "success");
+        }
+        
     });
   }
 
