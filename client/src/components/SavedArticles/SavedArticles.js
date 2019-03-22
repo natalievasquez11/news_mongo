@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 function SavedArticles(props) {
     return(
@@ -7,7 +8,7 @@ function SavedArticles(props) {
             {props.savedArticlesState.length === 0 ? 
             <div className="row">
                 <div className="col s12">
-                    <h2><i className="medium material-icons">error_outline</i>No articles have been saved.</h2>
+                    <h2>No articles have been saved.</h2>
                 </div>
             </div>
             :
@@ -30,7 +31,7 @@ function SavedArticles(props) {
                         </div>
                         <div className="col s1 valign-wrapper">
                             <br />
-                            <a id={articleRes._id} className="btn">COMMENTS</a>
+                            <Link to="/comments" className="btn" id={articleRes._id} >COMMENTS</Link>
                         </div>
                     </div>
                 ))}
