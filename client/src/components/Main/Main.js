@@ -3,7 +3,7 @@ import "./style.css";
 
 function Main(props) {
     return(
-        <div className="container center-align">
+        <main className="container center-align">
             <a className={props.scrapedArticles.length === 0 ? "btn-large" : "btn-large disabled"} 
             onClick={props.handleScrape}>
                 Click here to scrape NPR articles
@@ -11,7 +11,7 @@ function Main(props) {
             {props.scrapedArticles.map(articleRes => (
                 <div className="row">
                     <div className="col s11">
-                        <a href={articleRes.link} target="_blank">
+                        <a href={articleRes.link} target="_blank" rel="noopener noreferrer">
                             <div className="card-panel left-align grey lighten-5">
                                 <span className="black-text">
                                     <h6><strong>{articleRes.headline}</strong></h6>
@@ -25,7 +25,7 @@ function Main(props) {
                     </div>
                 </div>
             ))}
-        </div>
+        </main>
     );
 }
 

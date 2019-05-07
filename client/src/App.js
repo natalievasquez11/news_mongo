@@ -10,7 +10,7 @@ function App() {
       <div>
         <Route exact path="/" component={Home} />
         <Route exact path="/saved" component={Saved} />
-        <Route exact path="/comments" component={Comments} />
+        <Route exact path="/comments/:id" component={Comments} />
       </div>
     </Router>
   )

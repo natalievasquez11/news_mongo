@@ -73,7 +73,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="pageContainter">
         < Navbar 
             handleClear={this.handleClear}
         />
@@ -83,7 +83,7 @@ class Home extends Component {
             scrapedArticles={this.state.scraped}
             handleSave={this.handleSave}
         />
-        {/* < Footer /> */}
+        < Footer />
       </div>
     );
   }

@@ -53,7 +53,7 @@ class Saved extends Component {
 
     render() {
         return (
-          <div>
+          <div className='pageContainter'>
             < SavedNav 
                 handleClearSaved={this.handleClearSaved}
             />
@@ -62,7 +62,7 @@ class Saved extends Component {
                 savedArticlesState={this.state.saved}
                 handleDeleteArticle={this.handleDeleteArticle}
             />
-            {/* < Footer /> */}
+            < Footer />
           </div>
         );
       }

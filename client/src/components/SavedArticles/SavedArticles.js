@@ -16,7 +16,7 @@ function SavedArticles(props) {
                 {props.savedArticlesState.map(articleRes => (
                     <div className="row">
                         <div className="col s10">
-                            <a href={articleRes.link} target="_blank">
+                            <a href={articleRes.link} target="_blank" rel="noopener noreferrer">
                                 <div className="card-panel left-align grey lighten-5">
                                     <span className="black-text">
                                         <h6><strong>{articleRes.headline}</strong></h6>
@@ -31,7 +31,7 @@ function SavedArticles(props) {
                         </div>
                         <div className="col s1 valign-wrapper">
                             <br />
-                            <Link to="/comments" className="btn" id={articleRes._id} >COMMENTS</Link>
+                            <Link to={"/comments/"+ articleRes._id} className="btn">COMMENTS</Link>
                         </div>
                     </div>
                 ))}
