@@ -5,6 +5,7 @@ import Footer from "../components/Footer/Footer";
 import Main from "../components/Main/Main";
 import axios from 'axios';
 import swal from 'sweetalert';
+import "./style.css";
 
 
 class Home extends Component {
@@ -73,7 +74,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="pageContainter">
+      <div className='pageContainer'>
         < Navbar 
             handleClear={this.handleClear}
         />

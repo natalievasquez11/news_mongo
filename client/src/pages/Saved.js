@@ -5,6 +5,7 @@ import axios from 'axios';
 import SavedJumbotron from "../components/SavedJumbotron/SavedJumbotron";
 import SavedArticles from "../components/SavedArticles/SavedArticles";
 import swal from "sweetalert";
+import "./style.css";
 
 class Saved extends Component {
     state = {
@@ -39,21 +40,39 @@ class Saved extends Component {
     handleDeleteArticle = event => {
         const id = event.target.id;
 
-        axios.put("/unsaveArticle/" + id).then(response => {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, this article will be removed!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
 
-            axios.get("/saved").then(response => {
-                swal("OK!", "Article removed.", "success");
-                this.setState({
-                    saved: response.data
+            axios.put("/unsaveArticle/" + id).then(response => {
+                axios.get("/saved").then(response => {
+
+                    swal("The article has been deleted!", {
+                    icon: "success",
+                    });
+
+                    this.setState({
+                        saved: response.data
+                    });
                 });
-                  
             });
-        });
+            } else 
+            {
+                swal("Your article is safe!");
+            }
+        });                  
+
     }
 
     render() {
         return (
-          <div className='pageContainter'>
+          <div className='pageContainer'>
             < SavedNav 
                 handleClearSaved={this.handleClearSaved}
             />

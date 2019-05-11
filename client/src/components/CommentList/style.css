@@ -1,0 +1,29 @@
+.indComment {
+    margin: 20px 0 20px 0;
+}
+
+.delComment {
+    margin: 40px 50px 50px 0px;
+    background-color: rgba(202, 5, 5);
+}
+
+.delComment:visited {
+    background-color: rgba(202, 5, 5);
+}
+
+.delComment:focus{ 
+    background-color: rgba(202, 5, 5); 
+  }
+
+.delComment:hover {
+    background-color: rgb(248, 3, 3);
+}
+
+.delComment:active {
+    background-color: rgb(243, 77, 77);
+}
+
+
+
+
+

@@ -13,13 +13,13 @@ function SavedArticles(props) {
             </div>
             :
             <div>
-                {props.savedArticlesState.map(articleRes => (
-                    <div className="row">
+                {props.savedArticlesState.map((articleRes, index) => (
+                    <div className="row" key={index}>
                         <div className="col s10">
                             <a href={articleRes.link} target="_blank" rel="noopener noreferrer">
                                 <div className="card-panel left-align grey lighten-5">
                                     <span className="black-text">
-                                        <h6><strong>{articleRes.headline}</strong></h6>
+                                        <h6 key={index}><strong>{articleRes.headline}</strong></h6>
                                         <p>{articleRes.summary}</p>
                                     </span>
                                 </div>
@@ -31,7 +31,7 @@ function SavedArticles(props) {
                         </div>
                         <div className="col s1 valign-wrapper">
                             <br />
-                            <Link to={"/comments/"+ articleRes._id} className="btn">COMMENTS</Link>
+                            <Link to={"/comments/"+ articleRes._id} className="btn commentBtn">COMMENTS</Link>
                         </div>
                     </div>
                 ))}

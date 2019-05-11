@@ -122,6 +122,18 @@ app.put("/unsaved", function(req, res) {
     });
 });
 
+app.get("/get-comments/:id", function(req, res) {
+
+    console.log('getting article w/comments');
+
+    db.Article.find({ _id: req.params.id })
+    .then(function(dbArticle) {
+        res.json(dbArticle);
+    }).catch(function(err) {
+        res.json(err);
+    });
+});
+
 app.put("/comment/:id", function(req, res) {
 
     db.Article.update({
@@ -140,7 +152,7 @@ app.put("/comment/:id", function(req, res) {
 
 app.put("/uncomment/:id", function(req, res) {
 
-    db.Article.update({
+    db.Article.updateOne({
         _id: req.params.id,
         saved: true
     }, {
@@ -148,7 +160,7 @@ app.put("/uncomment/:id", function(req, res) {
             comments: { _id: req.body.id }
         }
     }).then(function(dbArticle) {
-        res.json(dbComment);
+        res.json(dbArticle);
     }).catch(function(err) {
         res.json(err);
     });
