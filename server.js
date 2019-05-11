@@ -18,7 +18,9 @@ app.use(express.json());
 app.use(express.static("client/build"));
 
 //connect to mongoDB
-mongoose.connect("mongodb://localhost:27017/nprArticleDB", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/nprArticleDB";
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 app.get("/scrape", function(req, res) {
     axios.get("https://www.npr.org/sections/news/").then(function(response) {
