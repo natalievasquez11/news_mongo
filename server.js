@@ -7,6 +7,8 @@ var cheerio = require("cheerio");
 //initialize express
 var app = express();
 
+var port = process.env.PORT || 8000;
+
 //use morgan logger for logging requests
 app.use(logger("dev"));
 //parse request body as JSON
@@ -168,6 +170,6 @@ app.put("/uncomment/:id", function(req, res) {
     });
 });
 
-app.listen(8000, function() {
+app.listen(port, function() {
     console.log("app running on port 8000");
 });
